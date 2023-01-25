@@ -14,8 +14,7 @@ module.exports = function(req, res, next) {
             return res.status(403).json({message: " доступно только для customer"})
         }
         next()
-    } catch (e) {
-        console.log(e)
+    } catch (e) {        
         return res.status(403).json({message: "пользователь не авторизован"})
     }
 }
