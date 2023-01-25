@@ -5,13 +5,10 @@ class ControllerSql {
     addInOrderList(req, res) {
         const token = req.headers['authorization'].split(' ')[1]
         const {id, role} = jwt.verify(token, process.env.SECRET)
-        console.log({id})
-        console.log(role)
-        console.log(token)
         const sql = `INSERT INTO orders (date, dealers_id) VALUES ( ?, ?)`
         connection.query(sql, [new Date(), id], function (err, result) {
             if (err) {
-                console.log(err)
+                //console.log(err)
                 return
             }
         })
@@ -20,7 +17,7 @@ class ControllerSql {
             const sql = `INSERT INTO production_has_orders (production_id, orders_id, quantity, price) VALUES ( ?, LAST_INSERT_ID(),  ?,?)`
             connection.query(sql, arr, function (err, result) {
                 if (err) {
-                    console.log(err)
+                    //console.log(err)
                 }
                 res.json({message: "Заказ  добавлен"})
             })
