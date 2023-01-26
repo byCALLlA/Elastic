@@ -19,7 +19,7 @@ class ControllerSql {
                 if (err) {
                     //console.log(err)
                 }
-                res.json({message: "Заказ  добавлен"})
+                //console.log("Добавлен")                
             })
         }
     }
